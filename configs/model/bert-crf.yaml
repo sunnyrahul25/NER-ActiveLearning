@@ -1,0 +1,10 @@
+_target_: src.models.bert_crf.Transformer_CRF_LitModel
+config:
+  embedder_type: "bert-base-cased" # overided in experiment conf
+  hidden_dim: 0
+  add_iobes_constraint: 0
+  dropout: 0.5
+  learningrate: 2e-5
+  adam_epsilon: 1e-8
+  warmup_step: 0
+  weight_decay: 0

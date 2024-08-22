@@ -1,0 +1,4 @@
+seed: 1
+batch_size: 8
+num_workers: 8 # number of workers used with dataloaders
+dataset_path: /data/users/srahul/projects/NER-ActiveLearning/data/processed/conll2003/S${seed}P1000V-1T-1

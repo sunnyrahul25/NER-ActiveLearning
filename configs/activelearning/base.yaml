@@ -1,0 +1,9 @@
+emb_type: cls
+pool_size: 64
+initial_labeled: 8
+query_size: 8
+num_rounds: 3
+neighbors: 3
+mc_samples: 3
+strategy: nlc
+save_best_model: False # save the model with best f1 scores over the activelearning cycle

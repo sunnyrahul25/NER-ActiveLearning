@@ -1,0 +1,34 @@
+# --------- pytorch --------- #
+torch>=1.10.0
+torchvision>=0.11.0
+pytorch-lightning==1.8.1
+torchmetrics==0.10.0
+
+# --------- hydra --------- #
+hydra-core==1.2.0
+hydra-colorlog==1.2.0
+hydra-optuna-sweeper==1.2.0
+
+# --------- data-processing --------- #
+datasets
+spacy
+accelerate
+
+# -----------hf--------- #
+transformers==4.24.0
+#
+colored>=1.4.4
+seqeval==1.2.2
+# --------- loggers --------- #
+#wandb
+# neptune-client
+mlflow
+# comet-ml
+
+# --------- others --------- #
+pyrootutils     # standardizing the project root setup
+pre-commit      # hooks for applying linters on commit
+rich            # beautiful text formatting in terminal
+pytest          # tests
+tqdm
+# sh            # for running bash commands in some tests (linux/macos only)

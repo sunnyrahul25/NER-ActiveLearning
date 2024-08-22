@@ -1,0 +1,4 @@
+seed: 1
+batch_size: 8
+num_workers: 8 # number of workers used with dataloaders
+dataset_path: /data/users/srahul/projects/NER-ActiveLearning/data/processed/ATC_500/S${seed}P100V100T100

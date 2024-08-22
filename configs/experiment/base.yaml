@@ -1,0 +1,33 @@
+# @package _global_
+
+# base config to extend upon.
+defaults:
+  - override /trainer: al.yaml
+  - override /model: bert-crf.yaml # bert-base-cased with parameter from @margataina paper
+  - override /callbacks: early_stopping.yaml
+  - override /logger: mlflow.yaml
+task_name: "base"
+seed: 42 # will be overrider by job runner
+tags: ["base"]
+
+activelearning:
+  # pool size from "Towards Understanding the Behaviors of Optimal Deep Active Learning Algorithms"
+  emb_type: cls
+  pool_size: 64
+  initial_labeled: 8
+  query_size: 8
+  num_rounds: 3
+  neighbors: 3
+  mc_samples: 3
+  strategy: nlc
+  save_best_model: False # save the model with best f1 scores over the activelearning cycle
+datamodule:
+  eval_batch_size: 8
+  batch_size: 8
+  num_workers: 8 # number of workers used with dataloaders
+  base_path: ""
+  val_test_suffix: ""
+  dataset_path: ${datamodule.base_path}/S${seed}${datamodule.val_test_suffix}
+logger:
+  mlflow:
+    experiment_name: ${task_name}

@@ -1,0 +1,41 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+defaults:
+  - override /trainer: default.yaml
+  - override /model: ner-crf.yaml # bert-base-cased with parameter from @margataina paper
+  - override /datamodule: conll2003.yaml
+  - override /callbacks: none.yaml
+  - override /logger: null
+
+task_name: "mit-restaurant:bert-base-cased:@zhou"
+seed: 42 # will be overrider by job runner
+tags: ["mnist", "simple_dense_net"]
+
+activelearning:
+  # pool size from "Towards Understanding the Behaviors of Optimal Deep Active Learning Algorithms"
+  emb_type: cls
+  pool_size: 64
+  initial_labeled: 8
+  query_size: 8
+  num_rounds: 3
+  neighbors: 3
+  mc_samples: 3
+  strategy: nlc
+  save_best_model: False # save the model with best f1 scores over the activelearning cycle
+
+trainer:
+  min_epochs: 1
+  max_epochs: 2
+  gradient_clip_val: 0.5
+  limit_train_batches: 1
+  limit_val_batches: 1
+  limit_test_batches: 1
+datamodule:
+  batch_size: 8
+  num_workers: 0 # number of workers used with dataloaders
+  eval_batch_size: 8
+# logger:
+#   mlflow:
+#     experiment_name: ${task_name}
